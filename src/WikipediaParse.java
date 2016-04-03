@@ -1,10 +1,8 @@
-package Main;
-
 import articlefilter.ArticleFilter;
 import info.bliki.wiki.dump.IArticleFilter;
 import info.bliki.wiki.dump.WikiXMLParser;
 
-public class Main {
+public class WikipediaParse {
 
 	public static void main(String[] args) {
 		// Example:
@@ -12,7 +10,8 @@ public class Main {
 		
 		String bz2Filename = "/Users/username/Downloads/jawiki-latest-pages-articles.xml.bz2";
 		try {
-			IArticleFilter handler = new ArticleFilter();
+			int limit = Integer.valueOf(args[0]);
+			IArticleFilter handler = new ArticleFilter(limit);
 			WikiXMLParser wxp = new WikiXMLParser(bz2Filename, handler);
 			wxp.parse();
 		} catch (Exception e) {

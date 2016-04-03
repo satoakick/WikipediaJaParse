@@ -3,9 +3,7 @@ package articlefilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 import info.bliki.wiki.dump.IArticleFilter;
 import info.bliki.wiki.dump.Siteinfo;
@@ -19,11 +17,15 @@ public class ArticleFilter implements IArticleFilter {
 	
 	int cnt = 1;
 	
-	final int limit = 100000;
+	private int limit;
 	
 	// output
-	final String DIR = "/Users/username/dev/eclipse4.4/eclipse/workspace/WikipediaParse/files/";
-	
+	final String DIR = "./files/";
+  
+  public ArticleFilter(int limit) {
+    this.limit = limit;
+  }
+
 	public void process(WikiArticle page, Siteinfo siteinfo) {
 		PrintWriter pw = null;
 		String fileName = DIR+arrangeFileName(page.getTitle())+".txt";

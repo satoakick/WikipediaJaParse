@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="wikiparse" basedir="." default="compile">
+  
+  <path id="build.lib">
+    <fileset dir="lib" includes="*.jar" />
+  </path>
+  <target name="exec">
+    <java classname="Main.Main" classpathref="build.lib" classpath="classes/" />
+  </target>
+
+  <target name="init">
+    <delete dir="classes"/>
+    <mkdir dir="classes"/>
+  </target>
+  
+  <target name="compile" depends="init">
+    <javac classpathref="build.lib" srcdir="src" destdir="classes"
+      encoding="utf-8"
+      source="1.7"
+      target="1.7"
+      fork="true"
+      memorymaximumsize="256m"
+      includeAntRuntime="false"
+      debug="true" />
+  </target>
+
+</project>
